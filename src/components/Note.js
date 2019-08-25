@@ -2,7 +2,7 @@ import React from 'react';
 
 class Note extends React.Component {
 
-  onSubmit (e) {
+  onSubmit(e) {
     e.preventDefault();
     const formData = {
       title: this.title.value,
@@ -11,27 +11,30 @@ class Note extends React.Component {
     this.props.submitNote(formData, this.props.note.id);
   }
 
-  class="language-jsx">renderTagForm() {
+  onTagSubmit(e) {
+    e.preventDefault();
+    console.log(this.name.value);
+    this.props.closeTagForm();
+  }
+
+  renderTagForm() {
     if (!this.props.newTag) {
       return (
         <span>
           Tag your note:
-          <i
-            className="tag-button material-icons"
-            onClick={() => this.props.showTagForm()}
-          >
-              add circle
-          </i>
+          <i className="tag-button material-icons"  onClick={() => this.props.showTagForm()}>add circle</i>
         </span>
       );
     } else {
-        return (
-        <form>
+      return (
+        <form onSubmit={(e) => this.onTagSubmit(e)}>
+
           <input
             className="tag-input"
             type="text"
             placeholder="Tag Name..."
-          />
+            ref={(input) => this.name = input}
+           />
         </form>
       );
     }
@@ -49,7 +52,7 @@ class Note extends React.Component {
             placeholder="Note Title..."
             defaultValue={note.title}
             ref={(input) => this.title = input}
-            />
+           />
           <textarea
             className="note-textarea"
             placeholder="Type Here..."
@@ -58,7 +61,7 @@ class Note extends React.Component {
           />
           <input className="note-button" type="submit" value="Submit" />
         </form>
-          <div className="tag-container">
+        <div className="tag-container">
           <div className="tag-button-container">
             {this.renderTagForm()}
           </div>
