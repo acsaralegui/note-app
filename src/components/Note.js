@@ -89,7 +89,7 @@ class Note extends React.Component {
         </form>
         <div className="tag-container">
           <div className="tag-button-container">
-            {renderTagForm()}
+            {this.renderTagForm(note)}
           </div>
           <div className="tag-list-container">
             {this.renderTags(note)}
