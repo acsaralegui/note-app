@@ -15,7 +15,7 @@ constructor() {
     notes: [],
     note: {},
     newTag: false,
-    error ''
+    error: ''
   };
 }
 
