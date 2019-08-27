@@ -23,7 +23,7 @@ class NoteCard extends Component {
           {note.content}
         </div>
         <div className="note-card-tags"
-          {this.rendertags(note)}
+          {this.renderTags(note)}
         </div>
         <span className="note-card-delete"onClick={() => deleteNote(note.id)}>
           <i className="material-icons">close</i>
